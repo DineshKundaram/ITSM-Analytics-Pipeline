@@ -1,0 +1,110 @@
+# dbt_project.yml
+name: 'itsm_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  itsm_analytics:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+# models/schema.yml
+version: 2
+
+sources:
+  - name: raw
+    database: postgres
+    schema: public
+    tables:
+      - name: tickets
+        description: "Raw ServiceNow ticket data from CSV import"
+        columns:
+          - name: "Ticket ID"
+            description: "Unique identifier for the ticket"
+            tests:
+              - not_null
+          - name: "Category"
+            description: "High-level categorization of the ticket"
+          - name: "Sub-Category"
+            description: "Detailed categorization of the ticket"
+          - name: "Priority"
+            description: "Ticket priority (Critical, High, Medium, Low)"
+          - name: "Created Date"
+            description: "Date and time when the ticket was created"
+            tests:
+              - not_null
+          - name: "Resolved Date"
+            description: "Date and time when the ticket was resolved"
+          - name: "Status"
+            description: "Current status of the ticket"
+          - name: "Assigned Group"
+            description: "Team assigned to the ticket"
+          - name: "Technician"
+            description: "Individual assigned to the ticket"
+          - name: "Resolution Time (Hrs)"
+            description: "Time taken to resolve the ticket in hours"
+          - name: "Customer Impact"
+            description: "Impact level for the customer"
+
+models:
+  - name: stg_tickets
+    description: "Cleaned and standardized ticket data"
+    columns:
+      - name: ticket_id
+        description: "Unique identifier for the ticket"
+        tests:
+          - unique
+          - not_null
+      - name: created_date
+        description: "Standardized creation timestamp"
+        tests:
+          - not_null
+
+  - name: resolution_time_by_category
+    description: "Average resolution time metrics by category and priority"
+    columns:
+      - name: category
+        description: "Ticket category"
+        tests:
+          - not_null
+      - name: priority
+        description: "Ticket priority"
+        tests:
+          - not_null
+      - name: avg_resolution_time
+        description: "Average resolution time in hours"
+
+  - name: closure_rate_by_group
+    description: "Ticket closure rate by assigned group"
+    columns:
+      - name: assigned_group
+        description: "Team assigned to tickets"
+        tests:
+          - not_null
+      - name: closure_rate
+        description: "Percentage of tickets closed by the group"
+
+  - name: monthly_ticket_summary
+    description: "Monthly aggregation of ticket metrics"
+    columns:
+      - name: month_start_date
+        description: "First day of the month"
+        tests:
+          - not_null
+          - unique

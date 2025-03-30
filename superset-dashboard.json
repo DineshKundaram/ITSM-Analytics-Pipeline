@@ -1,0 +1,375 @@
+{
+  "dashboard_title": "ITSM Service Performance Dashboard",
+  "description": "Analysis of IT Service Management ticket metrics and performance",
+  "css": "",
+  "slug": "itsm-performance",
+  "uuid": "d1e14822-1c55-4f71-a3b3-e7c11e180c4d",
+  "position": {
+    "CHART-ticket_volume_trend": {
+      "children": [],
+      "id": "CHART-ticket_volume_trend",
+      "meta": {
+        "chartId": 1001,
+        "height": 50,
+        "sliceName": "Daily Ticket Volume Trend",
+        "width": 6
+      },
+      "type": "CHART"
+    },
+    "CHART-resolution_time_by_category": {
+      "children": [],
+      "id": "CHART-resolution_time_by_category",
+      "meta": {
+        "chartId": 1002,
+        "height": 50,
+        "sliceName": "Average Resolution Time by Category",
+        "width": 6
+      },
+      "type": "CHART"
+    },
+    "CHART-closure_rate_pie": {
+      "children": [],
+      "id": "CHART-closure_rate_pie",
+      "meta": {
+        "chartId": 1003,
+        "height": 50,
+        "sliceName": "Closure Rate by Assigned Group",
+        "width": 6
+      },
+      "type": "CHART"
+    },
+    "CHART-open_tickets_table": {
+      "children": [],
+      "id": "CHART-open_tickets_table",
+      "meta": {
+        "chartId": 1004,
+        "height": 50,
+        "sliceName": "Open Tickets by Priority",
+        "width": 6
+      },
+      "type": "CHART"
+    },
+    "DASHBOARD_VERSION_KEY": "v2",
+    "GRID_ID": {
+      "children": [
+        {
+          "children": [
+            {
+              "id": "CHART-ticket_volume_trend",
+              "meta": {
+                "height": 50,
+                "width": 6
+              },
+              "type": "CHART"
+            },
+            {
+              "id": "CHART-resolution_time_by_category",
+              "meta": {
+                "height": 50,
+                "width": 6
+              },
+              "type": "CHART"
+            }
+          ],
+          "id": "ROW-1",
+          "meta": {
+            "background": "BACKGROUND_TRANSPARENT"
+          },
+          "type": "ROW"
+        },
+        {
+          "children": [
+            {
+              "id": "CHART-closure_rate_pie",
+              "meta": {
+                "height": 50,
+                "width": 6
+              },
+              "type": "CHART"
+            },
+            {
+              "id": "CHART-open_tickets_table",
+              "meta": {
+                "height": 50,
+                "width": 6
+              },
+              "type": "CHART"
+            }
+          ],
+          "id": "ROW-2",
+          "meta": {
+            "background": "BACKGROUND_TRANSPARENT"
+          },
+          "type": "ROW"
+        }
+      ],
+      "id": "GRID_ID",
+      "type": "GRID"
+    },
+    "HEADER_ID": {
+      "id": "HEADER_ID",
+      "meta": {
+        "text": "ITSM Service Performance Dashboard"
+      },
+      "type": "HEADER"
+    },
+    "ROOT_ID": {
+      "children": [
+        "GRID_ID"
+      ],
+      "id": "ROOT_ID",
+      "type": "ROOT"
+    },
+    "TABS-1": {
+      "children": [
+        "TAB-1",
+        "TAB-2"
+      ],
+      "id": "TABS-1",
+      "type": "TABS"
+    },
+    "TAB-1": {
+      "children": [
+        "ROW-1"
+      ],
+      "id": "TAB-1",
+      "meta": {
+        "text": "Performance Metrics"
+      },
+      "type": "TAB"
+    },
+    "TAB-2": {
+      "children": [
+        "ROW-2"
+      ],
+      "id": "TAB-2",
+      "meta": {
+        "text": "Backlog Analysis"
+      },
+      "type": "TAB"
+    }
+  },
+  "metadata": {
+    "filter_configuration": [
+      {
+        "id": "filter_week",
+        "name": "Week",
+        "type": "filter_time",
+        "targets": [
+          {
+            "datasetId": 10,
+            "column": {
+              "name": "created_date"
+            }
+          }
+        ],
+        "defaultValue": "Last week",
+        "scope": {
+          "excluded": []
+        }
+      },
+      {
+        "id": "filter_category",
+        "name": "Category",
+        "type": "filter_select",
+        "targets": [
+          {
+            "datasetId": 10,
+            "column": {
+              "name": "category"
+            }
+          }
+        ],
+        "defaultValue": null,
+        "scope": {
+          "excluded": []
+        }
+      },
+      {
+        "id": "filter_priority",
+        "name": "Priority",
+        "type": "filter_select",
+        "targets": [
+          {
+            "datasetId": 10,
+            "column": {
+              "name": "priority"
+            }
+          }
+        ],
+        "defaultValue": null,
+        "scope": {
+          "excluded": []
+        }
+      }
+    ],
+    "timed_refresh_immune_slices": [],
+    "expanded_slices": {},
+    "refresh_frequency": 0,
+    "chart_configuration": {},
+    "native_filter_configuration": [
+      {
+        "id": "NATIVE_FILTER-1",
+        "name": "Week",
+        "filterType": "time_range",
+        "targets": [
+          {
+            "datasetId": 10,
+            "column": {
+              "name": "created_date"
+            }
+          }
+        ],
+        "defaultDataMask": {
+          "filterState": {
+            "value": "Last week"
+          }
+        },
+        "scope": {
+          "rootPath": ["ROOT_ID"],
+          "excluded": []
+        },
+        "controlValues": {
+          "enableEmptyFilter": false
+        }
+      },
+      {
+        "id": "NATIVE_FILTER-2",
+        "name": "Category",
+        "filterType": "filter_select",
+        "targets": [
+          {
+            "datasetId": 10,
+            "column": {
+              "name": "category"
+            }
+          }
+        ],
+        "defaultDataMask": {
+          "filterState": {
+            "value": null
+          }
+        },
+        "scope": {
+          "rootPath": ["ROOT_ID"],
+          "excluded": []
+        },
+        "controlValues": {
+          "enableEmptyFilter": true,
+          "multiSelect": true
+        }
+      },
+      {
+        "id": "NATIVE_FILTER-3",
+        "name": "Priority",
+        "filterType": "filter_select",
+        "targets": [
+          {
+            "datasetId": 10,
+            "column": {
+              "name": "priority"
+            }
+          }
+        ],
+        "defaultDataMask": {
+          "filterState": {
+            "value": null
+          }
+        },
+        "scope": {
+          "rootPath": ["ROOT_ID"],
+          "excluded": []
+        },
+        "controlValues": {
+          "enableEmptyFilter": true,
+          "multiSelect": true
+        }
+      }
+    ]
+  },
+  "slices": [
+    {
+      "slice_id": 1001,
+      "slice_name": "Daily Ticket Volume Trend",
+      "form_data": {
+        "viz_type": "line",
+        "datasource": "10__table",
+        "slice_id": 1001,
+        "url_params": {},
+        "time_grain_sqla": "P1D",
+        "time_range": "Last 90 days",
+        "metrics": [{"expressionType": "SQL", "sqlExpression": "COUNT(*)", "column": null, "aggregate": null, "label": "Ticket Count"}],
+        "groupby": ["created_date"],
+        "adhoc_filters": [],
+        "row_limit": 10000,
+        "show_legend": true,
+        "x_axis_label": "Date",
+        "y_axis_label": "Number of Tickets",
+        "y_axis_format": "SMART_NUMBER"
+      }
+    },
+    {
+      "slice_id": 1002,
+      "slice_name": "Average Resolution Time by Category",
+      "form_data": {
+        "viz_type": "bar",
+        "datasource": "11__table",
+        "slice_id": 1002,
+        "url_params": {},
+        "metrics": [{"column": {"column_name": "avg_resolution_time"}, "expressionType": "SIMPLE", "aggregate": "AVG", "label": "Average Resolution Time (Hours)"}],
+        "groupby": ["category"],
+        "timeseries_limit_metric": {"column": {"column_name": "avg_resolution_time"}, "expressionType": "SIMPLE", "aggregate": "AVG"},
+        "order_desc": true,
+        "adhoc_filters": [],
+        "row_limit": 50,
+        "color_scheme": "supersetColors",
+        "show_legend": true,
+        "x_axis_label": "Category",
+        "y_axis_label": "Hours",
+        "y_axis_format": ",.1f"
+      }
+    },
+    {
+      "slice_id": 1003,
+      "slice_name": "Closure Rate by Assigned Group",
+      "form_data": {
+        "viz_type": "pie",
+        "datasource": "12__table",
+        "slice_id": 1003,
+        "url_params": {},
+        "metric": {"column": {"column_name": "closure_rate"}, "expressionType": "SIMPLE", "aggregate": "AVG", "label": "Closure Rate (%)"},
+        "groupby": ["assigned_group"],
+        "adhoc_filters": [],
+        "row_limit": 15,
+        "color_scheme": "supersetColors",
+        "show_legend": true,
+        "show_labels": true,
+        "labels_outside": true,
+        "number_format": ",.1f"
+      }
+    },
+    {
+      "slice_id": 1004,
+      "slice_name": "Open Tickets by Priority",
+      "form_data": {
+        "viz_type": "table",
+        "datasource": "14__table",
+        "slice_id": 1004,
+        "url_params": {},
+        "metrics": [
+          {"column": {"column_name": "open_ticket_count"}, "expressionType": "SIMPLE", "aggregate": "SUM", "label": "Open Tickets"}
+        ],
+        "groupby": ["priority", "oldest_ticket_age_days", "oldest_ticket_date"],
+        "timeseries_limit_metric": {"column": {"column_name": "open_ticket_count"}, "expressionType": "SIMPLE", "aggregate": "SUM"},
+        "adhoc_filters": [],
+        "row_limit": 50,
+        "order_desc": true,
+        "align_pn": false,
+        "color_pn": true,
+        "include_search": true,
+        "page_length": 10,
+        "order_by_cols": ["priority ASC"]
+      }
+    }
+  ]
+}
