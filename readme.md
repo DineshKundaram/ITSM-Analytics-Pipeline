@@ -40,12 +40,12 @@ itsm-analytics/
 
 - Docker and Docker Compose
 - Git
-- Python 3.8+
+- Python 3.12
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/itsm-analytics.git
+git clone https://github.com/DineshKundaram/itsm-analytics.git
 cd itsm-analytics
 ```
 
