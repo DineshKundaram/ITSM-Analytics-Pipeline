@@ -146,10 +146,3 @@ The Superset dashboard includes:
 2. PostgreSQL is used as the data warehouse
 3. Tickets have a linear lifecycle with defined status values
 4. The "Resolved Date" and "Resolution Time" fields may contain null values for open tickets
-
-## Future Improvements
-
-1. Add data quality tests for the raw data
-2. Implement incremental loading for larger datasets
-3. Add SLA compliance metrics and alerts
-4
